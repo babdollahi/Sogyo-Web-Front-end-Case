@@ -7,8 +7,10 @@ function registerEventListeners (){
         var numAdults
         var numKids
         var basket 
-        var dictBasket = {}
         var NumberOfOrders = 0
+        var orders = []
+
+        
         button.addEventListener('click', function(event) {
             var buttonClicked = event.target
             nameOfAttraction = buttonClicked.parentElement.parentElement.firstElementChild.innerText
@@ -23,19 +25,26 @@ function registerEventListeners (){
                 numKids = classNumKids[0].value
             }
 
-
             basket = {
                 "Name of attraction:" : nameOfAttraction,
                 "Number of adults:" : numAdults,
                 "Number of kids:" : numKids
             }
 
-            NumberOfOrders =NumberOfOrders +1
-            dictBasket[(NumberOfOrders).toString()] = basket
-            saveOrderInShoppingBasket(dictBasket)
+            //Add basket dics to an array
+            orders.push(basket)
+            //store basket array to local storage
+            localStorage.setItem("orders", JSON.stringify(orders))
+            // Update array using the stored array in local storage
+            orders = JSON.parse(localStorage.getItem('orders'))
 
+
+            //Updating number of orders stored in the shopping basket
+            NumberOfOrders =NumberOfOrders +1
             document.getElementsByClassName("badge")[0].innerText =  (NumberOfOrders).toString()
-            console.log(document.getElementsByClassName("badge")[0].innerText)
+
+
+            saveOrderInShoppingBasket(orders)
 
         })
         
@@ -43,12 +52,9 @@ function registerEventListeners (){
 
 }
 
-function saveOrderInShoppingBasket(dictBasket) {
-    for (var key in dictBasket) {
-        localStorage.setItem(key, JSON.stringify(dictBasket[key]))
-        localStorage.getItem(key)
-      }
-  }
+function saveOrderInShoppingBasket(orders) {
+    console.log(orders)
+}
 
 registerEventListeners ()
 

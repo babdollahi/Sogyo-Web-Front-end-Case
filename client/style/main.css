@@ -81,7 +81,7 @@ article {
 
 .badge {
     background-color: red;
-    /* display: none; */
+    display: none;
     color: white;
     font-weight: bold;
     width: 25px;
