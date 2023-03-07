@@ -26,9 +26,9 @@ function registerEventListeners (){
             }
 
             basket = {
-                "Name of attraction:" : nameOfAttraction,
-                "Number of adults:" : numAdults,
-                "Number of kids:" : numKids
+                "Name of attraction" : nameOfAttraction,
+                "Number of adults" : numAdults,
+                "Number of kids" : numKids
             }
 
             //Add basket dics to an array
@@ -53,8 +53,7 @@ function registerEventListeners (){
 }
 
 function saveOrderInShoppingBasket(orders) {
-    console.log(orders)
+    // console.log(orders)
 }
 
 registerEventListeners ()
-
