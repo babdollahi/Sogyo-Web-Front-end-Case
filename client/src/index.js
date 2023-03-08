@@ -16,13 +16,20 @@ function registerEventListeners (){
             nameOfAttraction = buttonClicked.parentElement.parentElement.firstElementChild.innerText
 
             var classNumAdults = buttonClicked.parentElement.getElementsByClassName("numberofadults")
-            if (classNumAdults.length >0 ) {
+            if (classNumAdults[0].value) {
                 numAdults = classNumAdults[0].value
+            }
+            else {
+                numAdults = 0
             }
 
             var classNumKids = buttonClicked.parentElement.getElementsByClassName("numberofkids")
-            if (classNumKids.length >0 ) {
+
+            if (classNumKids[0].value) {
                 numKids = classNumKids[0].value
+            }
+            else {
+                numKids =0
             }
 
             basket = {
