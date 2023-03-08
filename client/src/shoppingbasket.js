@@ -19,3 +19,12 @@ function showContent() {
 
 showContent()
 
+function clickPay() { 
+    document.getElementById("finalizepaymentbutton").addEventListener("click", 
+    function() {
+        localStorage.clear()
+        window.open("client/orderplaced.html")
+    })
+}
+
+clickPay()

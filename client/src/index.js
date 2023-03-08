@@ -29,7 +29,7 @@ function registerEventListeners (){
                 numKids = classNumKids[0].value
             }
             else {
-                numKids =0
+                numKids = 0
             }
 
             basket = {
