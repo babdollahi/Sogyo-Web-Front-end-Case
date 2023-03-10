@@ -8,6 +8,19 @@
         <meta name="description" content="The ticket shop for Sogyo employees">
 
         <link rel="stylesheet" href="style/main.css">
+
+        <script>
+            (async () => {
+            const ordersJSON = localStorage.getItem('orders')
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: ordersJSON
+            }
+            const response = await fetch('api/placeorder', requestOptions);
+            })()
+        </script>
+
     </head>
 
     <body>

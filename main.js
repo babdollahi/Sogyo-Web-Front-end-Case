@@ -20,7 +20,7 @@ app.use(express.json());
  * Our code starts here.
  */
 const attractions = [
-    { 
+    {
         name: "De Efteling",
         description: "The Dutch fairy tale themed park. In high demand!",
         adultPrice: 32,
@@ -32,7 +32,7 @@ const attractions = [
         location: { lat: 51.649718, lon: 5.043689 },
     },
 
-    { 
+    {
         name: "Madurodam",
         description: "The Netherlands smallest theme park.",
         adultPrice: 25,
@@ -44,7 +44,7 @@ const attractions = [
         location: { lat: 52.0994779, lon: 4.299619900000039 },
     },
 
-    { 
+    {
         name: "Toverland",
         description: "Experience magic and wonder.",
         adultPrice: 30,
@@ -56,7 +56,7 @@ const attractions = [
         location: { lat: 51.3968994, lon: 5.9825161 },
     },
 
-    { 
+    {
         name: "Walibi Holland",
         description: "Need an Adrenaline Rush?",
         adultPrice: 37,
@@ -67,8 +67,8 @@ const attractions = [
         available: 20,
         location: { lat: 52.438554, lon: 5.766986 },
     },
-    
-    { 
+
+    {
         name: "Duinrell",
         description: "From the Kikkerbaan to the Tikibad.",
         adultPrice: 22,
@@ -78,9 +78,9 @@ const attractions = [
         discount: 7,
         available: 20,
         location: { lat: 52.147433, lon: 4.383922 },
-    }, 
+    },
 
-    { 
+    {
         name: "Slagharen",
         description: "Fun for the whole family in a true western style.",
         adultPrice: 28,
@@ -90,9 +90,9 @@ const attractions = [
         discount: 50,
         available: 2,
         location: { lat: 52.6249522, lon: 6.563149500000009 },
-    }, 
+    },
 
-    { 
+    {
         name: "Drievliet",
         description: "Come and experience our wonderful attractions.",
         adultPrice: 26,
@@ -102,7 +102,7 @@ const attractions = [
         discount: 25,
         available: 0,
         location: { lat: 52.052608, lon: 4.352633 },
-    }, 
+    },
 ]
 
 /**
@@ -120,12 +120,26 @@ const attractions = [
  */
 app.get("/api/attractions", function (request, response) {
     console.log("Api call received for /attractions");
+    filterZero=[0]
+    filteredZeroAvailabe = attractions.filter(attractions => !filterZero.includes(attractions.available))
 
-    response.json(attractions)
+    response.json(filteredZeroAvailabe)
 });
 
 app.post("/api/placeorder", function (request, response) {
     console.log("Api call received for /placeorder");
+
+    var receivedOrders = request.body
+    for (orders in receivedOrders) {
+        for (ticket in attractions) {
+            if (receivedOrders[orders]['Name of attraction'] === attractions[ticket]["name"].toUpperCase()) {
+                console.log(receivedOrders[orders]['Name of attraction'])
+                attractions[ticket]["available"] -= 1
+            }
+        }
+    }
+
+
 
     /**
      * Send the status code 200 back to the clients browser.

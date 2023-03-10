@@ -1,3 +1,15 @@
+function updateNumberOfOrders(numberOfOrders) { 
+  document.getElementsByClassName("badge")[0].innerText =  (numberOfOrders).toString()
+}
+
+function setBadge() {
+  const orders = localStorage.getItem("orders")
+  if (orders) {
+      const numberOfOrders = JSON.parse(orders).length
+      updateNumberOfOrders(numberOfOrders)
+  }
+}
+
 const orders = JSON.parse(localStorage.getItem('orders'))
 
 function addOrder(order) {
@@ -23,8 +35,10 @@ function clickPay() {
     document.getElementById("finalizepaymentbutton").addEventListener("click", 
     function() {
         localStorage.clear()
-        window.location.href = "client/orderplaced.html"
+        window.location.href = "orderplaced.html"
     })
 }
 
+
 clickPay()
+setBadge()
