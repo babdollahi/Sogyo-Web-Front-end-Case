@@ -66,15 +66,16 @@ function addAttraction(attraction) {
     divs[2].children[0].getElementsByClassName("adults")[0].innerText = attraction.minimumNumberOfAdults
     divs[2].children[0].getElementsByClassName("child")[0].innerText = attraction.minimumNumberOfKids
     divs[2].children[0].getElementsByClassName("percentage")[0].innerText = attraction.discount
+    console.log(divs[2].getElementsByClassName("price")[2].innerText)
     var button = divs[2].getElementsByClassName("orderbutton")[0]
 
-    // if(attraction.available = 0) {
-    //     console.log(attraction.available, attraction.name)
-        
-    //  } 
-    // else {
-        button.addEventListener('click', function(event) {registerEventListener(event)})
-    // }
+    if(attraction.available == 0) {
+        button.disabled = true
+
+    } 
+    else {
+    button.addEventListener('click', function(event) {registerEventListener(event)})
+    }
 
     document.body.appendChild(clon)
 }

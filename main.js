@@ -120,10 +120,10 @@ const attractions = [
  */
 app.get("/api/attractions", function (request, response) {
     console.log("Api call received for /attractions");
-    filterZero=[0]
-    filteredZeroAvailabe = attractions.filter(attractions => !filterZero.includes(attractions.available))
+    // filterZero=[0]
+    // filteredZeroAvailabe = attractions.filter(attractions => !filterZero.includes(attractions.available))
 
-    response.json(filteredZeroAvailabe)
+    response.json(attractions)
 });
 
 app.post("/api/placeorder", function (request, response) {
